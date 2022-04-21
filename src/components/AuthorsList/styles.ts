@@ -7,6 +7,6 @@ export const Wrapper = styled.div`
     gap: ${theme.spacings.regular};
 
     padding-bottom: ${theme.spacings.medium};
-    overflow-x: scroll;
+    overflow-x: auto;
   `}
 `
