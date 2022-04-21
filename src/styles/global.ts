@@ -18,6 +18,10 @@ export const GlobalStyle = createGlobalStyle<DefaultTheme>`
       src: local('Roboto'), url('/font/Roboto-Bold.ttf') format('ttf');
     }
 
+    html {
+      font-size: 62.5%;
+    }
+
     body,
     body * {
       margin: 0;
@@ -34,6 +38,15 @@ export const GlobalStyle = createGlobalStyle<DefaultTheme>`
       &::before {
         box-sizing: inherit;
       }
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
     }
   `}
 `
