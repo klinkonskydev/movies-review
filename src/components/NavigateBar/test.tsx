@@ -50,7 +50,6 @@ describe('<NavigateBar />', () => {
     expect(onClick).toBeCalledWith(page - 1)
 
     expect(screen.getByRole('button', { name: /1/ })).toHaveStyle({
-      'box-shadow': '0 0 2px 0 rgba(50,50,50,0.6)',
       'background-color': '#5C16C5',
       color: '#FFFFFF'
     })
@@ -73,7 +72,6 @@ describe('<NavigateBar />', () => {
     expect(onClick).toBeCalledWith(page + 1)
 
     expect(screen.getByRole('button', { name: /4/ })).toHaveStyle({
-      'box-shadow': '0 0 2px 0 rgba(50,50,50,0.6)',
       'background-color': '#5C16C5',
       color: '#FFFFFF'
     })
