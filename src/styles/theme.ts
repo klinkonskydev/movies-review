@@ -2,6 +2,7 @@ export default {
   colors: {
     primary: '#5C16C5',
     xpurple: '#2D0C5E',
+    orange: '#D18000',
     back: '#000000',
     xblack: '#323232',
     gray: '#646464',
