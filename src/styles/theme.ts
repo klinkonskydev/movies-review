@@ -24,7 +24,7 @@ export default {
       medium: '1.8rem',
       hue: '4.8rem'
     },
-    height: {
+    weight: {
       regular: 400,
       bold: 700
     },

@@ -32,7 +32,7 @@ export const GlobalStyle = createGlobalStyle<DefaultTheme>`
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       font-family: ${theme.font.family};
-      font-weight: ${theme.font.height.bold};
+      font-weight: ${theme.font.weight.bold};
 
       &::after,
       &::before {
