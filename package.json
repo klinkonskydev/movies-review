@@ -12,11 +12,12 @@
     "test:ci": "jest --runInBand",
     "typecheck": "tsc --project tsconfig.json --noEmit",
     "test:watch": "yarn jest --watchAll --maxWorkers=25%",
-    "storybook": "start-storybook -p 6006 -s ./public",
+    "storybook": "start-storybook -p 6006 -c .storybook watch-css -s ./src -s ./public",
     "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
     "next": "12.1.5",
+    "polished": "^4.2.2",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "styled-components": "^5.3.5",
