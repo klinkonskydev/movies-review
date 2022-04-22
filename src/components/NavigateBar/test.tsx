@@ -7,7 +7,7 @@ import NavigateBar from '.'
 
 describe('<NavigateBar />', () => {
   it('should render correctly', () => {
-    render(<NavigateBar initialValue={2} limit={5} />)
+    render(<NavigateBar initialValue={2} pages={5} />)
 
     expect(screen.getAllByRole('button')).toHaveLength(7)
   })
@@ -20,7 +20,7 @@ describe('<NavigateBar />', () => {
 
   it('should pass the page clicked', async () => {
     const onClick = jest.fn()
-    render(<NavigateBar onClick={onClick} initialValue={2} limit={5} />)
+    render(<NavigateBar onClick={onClick} initialValue={2} pages={5} />)
 
     const button = screen.getByRole('button', { name: /2/ })
 
@@ -37,7 +37,7 @@ describe('<NavigateBar />', () => {
     const onClick = jest.fn()
     const page = 2
 
-    render(<NavigateBar onClick={onClick} initialValue={page} limit={5} />)
+    render(<NavigateBar onClick={onClick} initialValue={page} pages={5} />)
 
     const button = screen.getByRole('button', { name: /prev/i })
 
@@ -59,7 +59,7 @@ describe('<NavigateBar />', () => {
     const onClick = jest.fn()
     const page = 3
 
-    render(<NavigateBar onClick={onClick} initialValue={page} limit={5} />)
+    render(<NavigateBar onClick={onClick} initialValue={page} pages={5} />)
 
     const button = screen.getByRole('button', { name: /next/i })
 

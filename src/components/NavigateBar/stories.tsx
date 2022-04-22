@@ -6,7 +6,7 @@ export default {
   component: NavigateBar,
   args: {
     initialValue: 1,
-    limit: 5
+    pages: 9
   }
 } as Meta
 

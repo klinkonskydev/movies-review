@@ -3,48 +3,71 @@ import * as S from './styles'
 
 export type NavigateBarProps = {
   initialValue?: number
-  limit?: number
+  pages?: number
   onClick?: (page: number) => void
 }
 
-const NavigateBar = ({ initialValue, limit, onClick }: NavigateBarProps) => {
-  const [page, setPage] = useState(initialValue || 0)
-  const array = new Array(limit).fill(0)
+const MAX_ITEMS = 5
+const MAX_LEFT = (MAX_ITEMS - 1) / 2
+
+const NavigateBar = ({
+  initialValue = 1,
+  pages,
+  onClick
+}: NavigateBarProps) => {
+  const [current, setCurrent] = useState(initialValue)
+  const first = Math.max(current - MAX_LEFT, 1)
 
   const handlePrevious = () => {
-    const newPage = page - 1
+    const newPage = current - 1
 
-    setPage(newPage)
+    setCurrent(newPage)
     !!onClick && onClick(newPage)
   }
 
   const handleNext = () => {
-    const newPage = page + 1
+    const newPage = current + 1
 
-    setPage(newPage)
+    setCurrent(newPage)
     !!onClick && onClick(newPage)
   }
 
   const handleClick = (page: number) => {
-    setPage(page)
+    setCurrent(page)
     !!onClick && onClick(page)
   }
 
   return (
     <S.Wrapper>
-      {limit ? (
+      {pages ? (
         <S.ButtonsWrapper>
-          <S.ButtonSecondary disabled={page <= 1} onClick={handlePrevious}>
+          <S.ButtonSecondary disabled={current <= 1} onClick={handlePrevious}>
             Prev
           </S.ButtonSecondary>
-          <S.Content page={page}>
-            {array.map((_, index) => (
-              <S.Button key={index} onClick={() => handleClick(index + 1)}>
-                {index + 1}
-              </S.Button>
-            ))}
+          <S.Content>
+            {Array.from({ length: MAX_ITEMS })
+              .map((_, index) => index + first)
+              .map((page) =>
+                page <= pages ? (
+                  <S.Button
+                    key={page}
+                    isCurrencyPage={current === page}
+                    onClick={() => handleClick(page)}
+                  >
+                    {page}
+                  </S.Button>
+                ) : (
+                  <S.Button
+                    key={page}
+                    isCurrencyPage={current === page}
+                    disabled
+                  >
+                    {page}
+                  </S.Button>
+                )
+              )}
           </S.Content>
-          <S.ButtonSecondary disabled={page === limit} onClick={handleNext}>
+          <S.ButtonSecondary disabled={current === pages} onClick={handleNext}>
             Next
           </S.ButtonSecondary>
         </S.ButtonsWrapper>

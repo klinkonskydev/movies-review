@@ -26,8 +26,12 @@ const buttonModifiers = {
   `
 }
 
-export const Button = styled.button`
-  ${({ theme }) => css`
+type ButtonProps = {
+  isCurrencyPage?: boolean
+}
+
+export const Button = styled.button<ButtonProps>`
+  ${({ theme, isCurrencyPage }) => css`
     all: unset;
 
     display: flex;
@@ -56,6 +60,8 @@ export const Button = styled.button`
 
       box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px !important;
     }
+
+    ${!!isCurrencyPage && buttonModifiers.focus(theme)}
   `}
 `
 
@@ -66,19 +72,11 @@ export const ButtonSecondary = styled(Button)`
   `}
 `
 
-type ContentProps = {
-  page?: number
-}
-
-export const Content = styled.div<ContentProps>`
-  ${({ theme, page }) => css`
+export const Content = styled.div`
+  ${({ theme }) => css`
     display: flex;
     align-items: center;
 
     gap: ${theme.spacings.large};
-
-    ${Button}:nth-child(${page}) {
-      ${!!page && buttonModifiers.focus(theme)}
-    }
   `}
 `
