@@ -9,7 +9,7 @@ describe('<NavigateBar />', () => {
   it('should render correctly', () => {
     render(<NavigateBar initialValue={2} pages={5} />)
 
-    expect(screen.getAllByRole('button')).toHaveLength(7)
+    expect(screen.getAllByRole('button')).toHaveLength(5)
   })
 
   it('should render the empty when no limit has been passed', () => {
@@ -75,5 +75,15 @@ describe('<NavigateBar />', () => {
       'background-color': '#5C16C5',
       color: '#FFFFFF'
     })
+  })
+
+  it('should render the disable buttons when button page is greater than pages', async () => {
+    const onClick = jest.fn()
+
+    render(<NavigateBar onClick={onClick} initialValue={2} pages={2} />)
+
+    expect(screen.getByRole('button', { name: /3/ })).toHaveAttribute(
+      'disabled'
+    )
   })
 })

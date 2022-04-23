@@ -7,7 +7,7 @@ export type NavigateBarProps = {
   onClick?: (page: number) => void
 }
 
-const MAX_ITEMS = 5
+const MAX_ITEMS = 3
 const MAX_LEFT = (MAX_ITEMS - 1) / 2
 
 const NavigateBar = ({
