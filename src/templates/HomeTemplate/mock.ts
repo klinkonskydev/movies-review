@@ -1,0 +1,21 @@
+export default [
+  'Ação',
+  'Aventura',
+  'Animação',
+  'Comedia',
+  'Crime',
+  'Documentario',
+  'Drama',
+  'Familia',
+  'Fantasia',
+  'Historia',
+  'Terror',
+  'Musica',
+  'Mistério',
+  'Romance',
+  'Ficção cientifica',
+  'Cinema TV',
+  'Thriller',
+  'Guerra',
+  'Faroeste'
+]
