@@ -22,6 +22,7 @@ export default {
       small: '1.4rem',
       regular: '1.6rem',
       medium: '1.8rem',
+      big: '2.4rem',
       hue: '4.8rem'
     },
     weight: {
