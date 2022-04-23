@@ -1,6 +1,6 @@
-import { createGlobalStyle, css, DefaultTheme } from 'styled-components'
+import { createGlobalStyle, css } from 'styled-components'
 
-export const GlobalStyle = createGlobalStyle<DefaultTheme>`
+export const GlobalStyle = createGlobalStyle`
   ${({ theme }) => css`
     @font-face {
       font-family: 'Roboto';
