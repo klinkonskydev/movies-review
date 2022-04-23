@@ -7,6 +7,11 @@ export const Wrapper = styled.div`
     gap: ${theme.spacings.regular};
 
     padding-bottom: ${theme.spacings.medium};
+    scroll-snap-type: x mandatory;
     overflow-x: auto;
+
+    & > div {
+      scroll-snap-align: start;
+    }
   `}
 `
