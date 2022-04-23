@@ -2,15 +2,20 @@ import Button from 'components/Button'
 import buttonsMock from './mock'
 
 import MoviesList from 'components/MoviesList'
-import moviesListMock from 'components/MoviesList/mock'
 
 import NavigateBar from 'components/NavigateBar'
 import Container from 'components/Container'
 import Header from 'components/Header'
 
 import * as S from './styles'
+import { CardProps } from 'components/Card'
 
-const HomeTemplate = () => (
+export type HomeTemplateProps = {
+  pages: number
+  movies: CardProps[]
+}
+
+const HomeTemplate = ({ movies, pages }: HomeTemplateProps) => (
   <S.Wrapper>
     <Header />
     <S.HeaderWrapper>
@@ -32,11 +37,11 @@ const HomeTemplate = () => (
 
     <S.Content>
       <Container>
-        <MoviesList items={moviesListMock} />
+        <MoviesList items={movies} />
       </Container>
     </S.Content>
 
-    <NavigateBar pages={5} />
+    <NavigateBar pages={pages} />
   </S.Wrapper>
 )
 export default HomeTemplate
