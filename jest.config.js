@@ -7,7 +7,7 @@ const createJestConfig = nextJest({
 const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/.jest/setup.ts'],
   collectCoverage: true,
-  collectCoverageFrom: ['src/components/**/*.ts(x)?', 'src/templates/**/*.ts(x)?', '!src/**/stories.tsx'],
+  collectCoverageFrom: ['src/components/**/*.ts(x)?', '!src/templates/**/*.ts(x)?', '!src/**/stories.tsx'],
   modulePaths: ['<rootDir>/src'],
   moduleDirectories: ['node_modules', '<rootDir>/src'],
   testEnvironment: 'jest-environment-jsdom',
