@@ -1,5 +1,6 @@
 import { rgba } from 'polished'
 import styled, { css, DefaultTheme } from 'styled-components'
+import media from 'styled-media-query'
 
 export const Wrapper = styled.nav`
   ${({ theme }) => css`
@@ -12,10 +13,16 @@ export const Wrapper = styled.nav`
 
 export const ButtonsWrapper = styled.div`
   ${({ theme }) => css`
+    width: 100%;
     display: flex;
     align-items: center;
 
     gap: ${theme.spacings.large};
+
+    ${media.lessThan('small')`
+    justify-content: center;
+    gap: ${theme.spacings.small};
+  `}
   `}
 `
 

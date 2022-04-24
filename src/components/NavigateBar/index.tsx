@@ -1,3 +1,4 @@
+import MediaMatch from 'components/MediaMatch'
 import { useState } from 'react'
 import * as S from './styles'
 
@@ -44,29 +45,37 @@ const NavigateBar = ({
           <S.ButtonSecondary disabled={current <= 1} onClick={handlePrevious}>
             Prev
           </S.ButtonSecondary>
-          <S.Content>
-            {Array.from({ length: MAX_ITEMS })
-              .map((_, index) => index + first)
-              .map((page) =>
-                page <= pages ? (
-                  <S.Button
-                    key={page}
-                    isCurrencyPage={current === page}
-                    onClick={() => handleClick(page)}
-                  >
-                    {page}
-                  </S.Button>
-                ) : (
-                  <S.Button
-                    key={page}
-                    isCurrencyPage={current === page}
-                    disabled
-                  >
-                    {page}
-                  </S.Button>
-                )
-              )}
-          </S.Content>
+
+          <MediaMatch greaterThan="small">
+            <S.Content>
+              {Array.from({ length: MAX_ITEMS })
+                .map((_, index) => index + first)
+                .map((page) =>
+                  page <= pages ? (
+                    <S.Button
+                      key={page}
+                      isCurrencyPage={current === page}
+                      onClick={() => handleClick(page)}
+                    >
+                      {page}
+                    </S.Button>
+                  ) : (
+                    <S.Button
+                      key={page}
+                      isCurrencyPage={current === page}
+                      disabled
+                    >
+                      {page}
+                    </S.Button>
+                  )
+                )}
+            </S.Content>
+          </MediaMatch>
+
+          <MediaMatch lessThan="small">
+            <S.Button type="button">{current}</S.Button>
+          </MediaMatch>
+
           <S.ButtonSecondary disabled={current === pages} onClick={handleNext}>
             Next
           </S.ButtonSecondary>
