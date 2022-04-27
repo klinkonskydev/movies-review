@@ -3,7 +3,7 @@ import { useState } from 'react'
 import * as S from './styles'
 
 export type NavigateBarProps = {
-  initialValue?: number
+  initialPage?: number
   pages?: number
   onClick?: (page: number) => void
 }
@@ -11,12 +11,8 @@ export type NavigateBarProps = {
 const MAX_ITEMS = 3
 const MAX_LEFT = (MAX_ITEMS - 1) / 2
 
-const NavigateBar = ({
-  initialValue = 1,
-  pages,
-  onClick
-}: NavigateBarProps) => {
-  const [current, setCurrent] = useState(initialValue)
+const NavigateBar = ({ initialPage = 1, pages, onClick }: NavigateBarProps) => {
+  const [current, setCurrent] = useState(initialPage)
   const first = Math.max(current - MAX_LEFT, 1)
 
   const handlePrevious = () => {
@@ -40,7 +36,7 @@ const NavigateBar = ({
 
   return (
     <S.Wrapper>
-      {pages ? (
+      {(!!pages && (
         <S.ButtonsWrapper>
           <S.ButtonSecondary disabled={current <= 1} onClick={handlePrevious}>
             Prev
@@ -65,7 +61,7 @@ const NavigateBar = ({
                       isCurrencyPage={current === page}
                       disabled
                     >
-                      {page}
+                      ...
                     </S.Button>
                   )
                 )}
@@ -73,16 +69,18 @@ const NavigateBar = ({
           </MediaMatch>
 
           <MediaMatch lessThan="small">
-            <S.Button type="button">{current}</S.Button>
+            {current > 0 && (
+              <S.Button type="button" isCurrencyPage={true}>
+                {current}
+              </S.Button>
+            )}
           </MediaMatch>
 
           <S.ButtonSecondary disabled={current === pages} onClick={handleNext}>
             Next
           </S.ButtonSecondary>
         </S.ButtonsWrapper>
-      ) : (
-        <h2>Empty</h2>
-      )}
+      )) || <h2>Empty</h2>}
     </S.Wrapper>
   )
 }

@@ -1,3 +1,4 @@
+import 'match-media-mock'
 import { screen, waitFor } from '@testing-library/react'
 import { render } from 'utils/render'
 
@@ -7,9 +8,10 @@ import NavigateBar from '.'
 
 describe('<NavigateBar />', () => {
   it('should render correctly', () => {
-    render(<NavigateBar initialValue={2} pages={5} />)
+    render(<NavigateBar initialPage={0} pages={2} />)
 
-    expect(screen.getAllByRole('button')).toHaveLength(5)
+    expect(screen.getByRole('button', { name: /prev/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /next/i })).toBeInTheDocument()
   })
 
   it('should render the empty when no limit has been passed', () => {
@@ -20,46 +22,9 @@ describe('<NavigateBar />', () => {
 
   it('should pass the page clicked', async () => {
     const onClick = jest.fn()
-    render(<NavigateBar onClick={onClick} initialValue={2} pages={5} />)
+    const page = 0
 
-    const button = screen.getByRole('button', { name: /2/ })
-
-    userEvent.click(button)
-
-    await waitFor(() => {
-      expect(onClick).toBeCalled()
-    })
-
-    expect(onClick).toBeCalledWith(2)
-  })
-
-  it('should go to prev page when "previous" button has been clicked ', async () => {
-    const onClick = jest.fn()
-    const page = 2
-
-    render(<NavigateBar onClick={onClick} initialValue={page} pages={5} />)
-
-    const button = screen.getByRole('button', { name: /prev/i })
-
-    userEvent.click(button)
-
-    await waitFor(() => {
-      expect(onClick).toBeCalled()
-    })
-
-    expect(onClick).toBeCalledWith(page - 1)
-
-    expect(screen.getByRole('button', { name: /1/ })).toHaveStyle({
-      'background-color': '#5C16C5',
-      color: '#FFFFFF'
-    })
-  })
-
-  it('should go to prev page when "next" button has been clicked ', async () => {
-    const onClick = jest.fn()
-    const page = 3
-
-    render(<NavigateBar onClick={onClick} initialValue={page} pages={5} />)
+    render(<NavigateBar onClick={onClick} initialPage={page} pages={5} />)
 
     const button = screen.getByRole('button', { name: /next/i })
 
@@ -70,20 +35,39 @@ describe('<NavigateBar />', () => {
     })
 
     expect(onClick).toBeCalledWith(page + 1)
-
-    expect(screen.getByRole('button', { name: /4/ })).toHaveStyle({
-      'background-color': '#5C16C5',
-      color: '#FFFFFF'
-    })
   })
 
-  it('should render the disable buttons when button page is greater than pages', async () => {
+  it('should go to prev page when "Prev" button has been clicked ', async () => {
     const onClick = jest.fn()
+    const page = 3
 
-    render(<NavigateBar onClick={onClick} initialValue={2} pages={2} />)
+    render(<NavigateBar onClick={onClick} initialPage={page} pages={5} />)
 
-    expect(screen.getByRole('button', { name: /3/ })).toHaveAttribute(
-      'disabled'
-    )
+    const button = screen.getByRole('button', { name: /prev/i })
+
+    userEvent.click(button)
+
+    await waitFor(() => {
+      expect(onClick).toBeCalled()
+    })
+
+    expect(onClick).toBeCalledWith(page - 1)
+  })
+
+  it('should go to prev page when "Prev" button has been clicked ', async () => {
+    const onClick = jest.fn()
+    const page = 0
+
+    render(<NavigateBar onClick={onClick} initialPage={page} pages={2} />)
+
+    const button = screen.getByText(2)
+
+    userEvent.click(button)
+
+    await waitFor(() => {
+      expect(onClick).toBeCalled()
+    })
+
+    expect(onClick).toBeCalledWith(2)
   })
 })
