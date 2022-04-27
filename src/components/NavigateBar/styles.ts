@@ -16,13 +16,13 @@ export const ButtonsWrapper = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
 
     gap: ${theme.spacings.large};
 
     ${media.lessThan('small')`
-    justify-content: center;
-    gap: ${theme.spacings.small};
-  `}
+      gap: ${theme.spacings.small};
+    `}
   `}
 `
 
