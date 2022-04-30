@@ -8,7 +8,7 @@ const Home = ({ movies, pages }: HomeTemplateProps) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const response = await api.get(`/3/movie/popular`, {
+  const response = await api.get(`/movie/popular`, {
     params: { page: Number(query.page || 1) }
   })
 
