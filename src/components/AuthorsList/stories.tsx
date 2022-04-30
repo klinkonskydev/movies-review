@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react'
+import { Story, Meta } from '@storybook/react'
 import AuthorsList, { AuthorsListProps } from '.'
 
 import items from './mock'
@@ -9,11 +9,15 @@ export default {
   args: {
     items: [...items, ...items]
   }
-} as Meta
+} as Meta<AuthorsListProps>
 
-export const Default = (args: AuthorsListProps) => <AuthorsList {...args} />
+export const Default: Story<AuthorsListProps> = (args) => (
+  <AuthorsList {...args} />
+)
 
-export const Mobile = (args: AuthorsListProps) => <AuthorsList {...args} />
+export const Mobile: Story<AuthorsListProps> = (args) => (
+  <AuthorsList {...args} />
+)
 
 Mobile.parameters = {
   viewport: {

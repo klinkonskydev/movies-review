@@ -4,6 +4,22 @@ import { rgba } from 'polished'
 
 type WrapperProps = Pick<CardProps, 'type'>
 
+export const Image = styled.img`
+  ${({ theme }) => css`
+    width: 100%;
+    max-width: 17.6rem;
+    display: block;
+    height: 22.2rem;
+
+    background-size: cover;
+    border-radius: ${theme.spacings.small};
+  `}
+`
+
+export const Heading = styled.h3``
+
+export const Subtitle = styled.p``
+
 const wrapperModifiers = {
   author: (theme: DefaultTheme) => css`
     max-width: 19.1rem;
@@ -32,6 +48,7 @@ const wrapperModifiers = {
   `,
 
   movie: (theme: DefaultTheme) => css`
+    max-width: 17.6rem;
     background: transparent;
 
     ${Image} {
@@ -54,31 +71,16 @@ const wrapperModifiers = {
 
 export const Wrapper = styled.div<WrapperProps>`
   ${({ theme, type }) => css`
-    width: 17.6rem;
-    overflow: hidden;
+    width: 100%;
     cursor: pointer;
+
     ${Heading} {
       width: 17.6rem;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
     }
+
     ${!!type && wrapperModifiers[type](theme)}
   `}
 `
-
-export const Image = styled.img`
-  ${({ theme }) => css`
-    width: 100%;
-    max-width: 17.6rem;
-    display: block;
-    height: 22.2rem;
-
-    background-size: cover;
-    border-radius: ${theme.spacings.small};
-  `}
-`
-
-export const Heading = styled.h3``
-
-export const Subtitle = styled.p``
