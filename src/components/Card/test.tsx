@@ -4,9 +4,10 @@ import { render } from 'utils/render'
 import Card from '.'
 
 const props = {
-  src: 'https://localhost/plus.svg',
+  id: 1,
+  poster_path: 'https://localhost/plus.svg',
   title: 'Ryan Reyholds',
-  subtitle: 'Wade Wilson / Deadpool'
+  subtitle: '2022-03-01'
 }
 
 describe('<Card />', () => {

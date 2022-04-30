@@ -1,5 +1,5 @@
 import MediaMatch from 'components/MediaMatch'
-import { useState } from 'react'
+import { useRouter } from 'next/router'
 import * as S from './styles'
 
 export type NavigateBarProps = {
@@ -12,25 +12,11 @@ const MAX_ITEMS = 3
 const MAX_LEFT = (MAX_ITEMS - 1) / 2
 
 const NavigateBar = ({ initialPage = 1, pages, onClick }: NavigateBarProps) => {
-  const [current, setCurrent] = useState(initialPage)
-  const first = Math.max(current - MAX_LEFT, 1)
+  const { query } = useRouter()
 
-  const handlePrevious = () => {
-    const newPage = current - 1
-
-    setCurrent(newPage)
-    !!onClick && onClick(newPage)
-  }
-
-  const handleNext = () => {
-    const newPage = current + 1
-
-    setCurrent(newPage)
-    !!onClick && onClick(newPage)
-  }
+  const first = Math.max(Number(query.page || initialPage) - MAX_LEFT, 1)
 
   const handleClick = (page: number) => {
-    setCurrent(page)
     !!onClick && onClick(page)
   }
 
@@ -38,7 +24,10 @@ const NavigateBar = ({ initialPage = 1, pages, onClick }: NavigateBarProps) => {
     <S.Wrapper>
       {(!!pages && (
         <S.ButtonsWrapper>
-          <S.ButtonSecondary disabled={current <= 1} onClick={handlePrevious}>
+          <S.ButtonSecondary
+            disabled={Number(query.page || initialPage) <= 1}
+            onClick={() => handleClick(Number(query.page || initialPage) - 1)}
+          >
             Prev
           </S.ButtonSecondary>
 
@@ -50,7 +39,9 @@ const NavigateBar = ({ initialPage = 1, pages, onClick }: NavigateBarProps) => {
                   page <= pages ? (
                     <S.Button
                       key={page}
-                      isCurrencyPage={current === page}
+                      isCurrencyPage={
+                        Number(query.page || initialPage) === page
+                      }
                       onClick={() => handleClick(page)}
                     >
                       {page}
@@ -58,7 +49,9 @@ const NavigateBar = ({ initialPage = 1, pages, onClick }: NavigateBarProps) => {
                   ) : (
                     <S.Button
                       key={page}
-                      isCurrencyPage={current === page}
+                      isCurrencyPage={
+                        Number(query.page || initialPage) === page
+                      }
                       disabled
                     >
                       ...
@@ -69,14 +62,17 @@ const NavigateBar = ({ initialPage = 1, pages, onClick }: NavigateBarProps) => {
           </MediaMatch>
 
           <MediaMatch lessThan="small">
-            {current > 0 && (
+            {Number(query.page || initialPage) > 0 && (
               <S.Button type="button" isCurrencyPage={true}>
-                {current}
+                {Number(query.page || initialPage)}
               </S.Button>
             )}
           </MediaMatch>
 
-          <S.ButtonSecondary disabled={current === pages} onClick={handleNext}>
+          <S.ButtonSecondary
+            disabled={Number(query.page || initialPage) === pages}
+            onClick={() => handleClick(Number(query.page || initialPage) + 1)}
+          >
             Next
           </S.ButtonSecondary>
         </S.ButtonsWrapper>

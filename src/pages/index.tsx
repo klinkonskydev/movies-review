@@ -1,17 +1,24 @@
-import type { GetStaticProps } from 'next'
+import type { GetServerSideProps } from 'next'
 import HomeTemplate, { HomeTemplateProps } from 'templates/HomeTemplate'
 
-import moviesListMock from 'components/MoviesList/mock'
+import { api } from 'services/api'
 
 const Home = ({ movies, pages }: HomeTemplateProps) => {
   return <HomeTemplate movies={movies} pages={pages} />
 }
 
-export const getStaticProps: GetStaticProps = () => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const response = await api.get(`/3/movie/popular`, {
+    params: { page: Number(query.page || 1) }
+  })
+
+  const data = await response.data
+  const pages = data.total_pages
+
   return {
     props: {
-      pages: 5,
-      movies: moviesListMock
+      pages,
+      movies: data.results
     }
   }
 }

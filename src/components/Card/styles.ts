@@ -32,7 +32,6 @@ const wrapperModifiers = {
   `,
 
   movie: (theme: DefaultTheme) => css`
-    width: max-content;
     background: transparent;
 
     ${Image} {
@@ -55,18 +54,26 @@ const wrapperModifiers = {
 
 export const Wrapper = styled.div<WrapperProps>`
   ${({ theme, type }) => css`
+    width: 17.6rem;
+    overflow: hidden;
+    cursor: pointer;
+    ${Heading} {
+      width: 17.6rem;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
     ${!!type && wrapperModifiers[type](theme)}
   `}
 `
 
-type ImageProps = Pick<CardProps, 'src'>
-
-export const Image = styled.div<ImageProps>`
-  ${({ theme, src }) => css`
+export const Image = styled.img`
+  ${({ theme }) => css`
     width: 100%;
+    max-width: 17.6rem;
+    display: block;
     height: 22.2rem;
 
-    background: url(${src}) no-repeat center top;
     background-size: cover;
     border-radius: ${theme.spacings.small};
   `}

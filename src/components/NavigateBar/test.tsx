@@ -6,9 +6,18 @@ import userEvent from '@testing-library/user-event'
 
 import NavigateBar from '.'
 
+const page = 2
+
+jest.mock('next/router', () => ({
+  __esModule: true,
+  useRouter: () => ({
+    query: { page }
+  })
+}))
+
 describe('<NavigateBar />', () => {
   it('should render correctly', () => {
-    render(<NavigateBar initialPage={0} pages={2} />)
+    render(<NavigateBar pages={3} />)
 
     expect(screen.getByRole('button', { name: /prev/i })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /next/i })).toBeInTheDocument()
@@ -20,11 +29,10 @@ describe('<NavigateBar />', () => {
     expect(screen.getByRole('heading', { name: /empty/i })).toBeInTheDocument()
   })
 
-  it('should pass the page clicked', async () => {
+  it('should go to next page', async () => {
     const onClick = jest.fn()
-    const page = 0
 
-    render(<NavigateBar onClick={onClick} initialPage={page} pages={5} />)
+    render(<NavigateBar onClick={onClick} pages={3} />)
 
     const button = screen.getByRole('button', { name: /next/i })
 
@@ -37,11 +45,9 @@ describe('<NavigateBar />', () => {
     expect(onClick).toBeCalledWith(page + 1)
   })
 
-  it('should go to prev page when "Prev" button has been clicked ', async () => {
+  it('should go to prev page', async () => {
     const onClick = jest.fn()
-    const page = 3
-
-    render(<NavigateBar onClick={onClick} initialPage={page} pages={5} />)
+    render(<NavigateBar onClick={onClick} pages={3} />)
 
     const button = screen.getByRole('button', { name: /prev/i })
 
@@ -54,13 +60,12 @@ describe('<NavigateBar />', () => {
     expect(onClick).toBeCalledWith(page - 1)
   })
 
-  it('should go to prev page when "Prev" button has been clicked ', async () => {
+  it('should page when clicked in any button', async () => {
     const onClick = jest.fn()
-    const page = 0
 
-    render(<NavigateBar onClick={onClick} initialPage={page} pages={2} />)
+    render(<NavigateBar onClick={onClick} initialPage={page} pages={3} />)
 
-    const button = screen.getByText(2)
+    const button = screen.getByText(/3/i)
 
     userEvent.click(button)
 
@@ -68,6 +73,6 @@ describe('<NavigateBar />', () => {
       expect(onClick).toBeCalled()
     })
 
-    expect(onClick).toBeCalledWith(2)
+    expect(onClick).toBeCalledWith(3)
   })
 })
