@@ -7,9 +7,11 @@ type WrapperProps = Pick<CardProps, 'type'>
 export const Image = styled.img`
   ${({ theme }) => css`
     width: 100%;
-    max-width: 17.6rem;
-    display: block;
     height: 22.2rem;
+    max-width: 17.6rem;
+
+    display: block;
+    object-fit: cover;
 
     background-size: cover;
     border-radius: ${theme.spacings.small};
