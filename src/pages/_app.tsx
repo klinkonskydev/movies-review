@@ -15,10 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="theme-color" content="#5C16C5" />
       </Head>
 
-      <NextNProgress
-        color={theme.colors.green}
-        height={5}
-      />
+      <NextNProgress color={theme.colors.green} height={5} />
 
       <Component {...pageProps} />
       <GlobalStyle />

@@ -9,4 +9,6 @@ export default {
   }
 } as Meta<PercentageCircleProps>
 
-export const Default: Story<PercentageCircleProps> = (args) => <PercentageCircle {...args} />
+export const Default: Story<PercentageCircleProps> = (args) => (
+  <PercentageCircle {...args} />
+)
