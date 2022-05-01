@@ -5,6 +5,7 @@ import * as NavigateBarStyles from 'components/NavigateBar/styles'
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
+    margin-top: 6rem;
     padding-bottom: ${theme.spacings.medium};
 
     ${NavigateBarStyles.Wrapper} {
