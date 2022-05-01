@@ -1,8 +1,11 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.header`
   ${({ theme }) => css`
+    position: fixed;
+    inset: 0 0 auto 0;
+
     display: flex;
     justify-content: center;
 
