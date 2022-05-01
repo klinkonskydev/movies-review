@@ -3,6 +3,11 @@ import { render } from 'utils/render'
 
 import Movie, { MovieProps } from '.'
 
+jest.mock('components/PercentageCircle', () => ({
+  __esModule: true,
+  default: ({ percented }: { percented: number }) => <p>{percented}</p>
+}))
+
 const props: MovieProps = {
   adult: false,
   title: 'The Batman',
@@ -34,6 +39,7 @@ const props: MovieProps = {
 
 describe('<Movie />', () => {
   it('should render correctly', () => {
+    const voteAverage = props.vote_average * 10
     render(<Movie {...props} />)
     const imagePath = 'https://image.tmdb.org/t/p/original'
 
@@ -43,7 +49,7 @@ describe('<Movie />', () => {
 
     expect(screen.getByText(props.overview)).toBeInTheDocument()
 
-    expect(screen.getByText(props.vote_average)).toBeInTheDocument()
+    expect(screen.getByText(voteAverage)).toBeInTheDocument()
 
     expect(screen.getByRole('img', { name: /foto de capa/i })).toHaveAttribute(
       'src',

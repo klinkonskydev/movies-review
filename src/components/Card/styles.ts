@@ -29,7 +29,7 @@ const wrapperModifiers = {
     padding: ${theme.spacings.small};
 
     border-radius: ${theme.spacings.small};
-    box-shadow: 0px 4px 4px ${rgba(theme.colors.back, 0.25)};
+    box-shadow: 0px 4px 4px ${rgba(theme.colors.black, 0.25)};
     background: ${theme.colors.white};
 
     ${Image} {
