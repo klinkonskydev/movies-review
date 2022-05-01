@@ -24,7 +24,7 @@ const HomeTemplate = ({ movies, pages }: HomeTemplateProps) => {
 
   const onClick = async (page: number) => {
     try {
-      const { data } = await api.get(`/3/movie/popular`, {
+      const { data } = await api.get(`/movie/popular`, {
         params: { page }
       })
 
