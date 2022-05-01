@@ -3,11 +3,12 @@ export default {
     primary: '#5C16C5',
     xpurple: '#2D0C5E',
     orange: '#D18000',
-    back: '#000000',
+    black: '#000000',
     xblack: '#323232',
     gray: '#646464',
     white: '#FFFFFF',
-    xwhite: '#E5E5E5'
+    xwhite: '#E5E5E5',
+    green: '#14FF00'
   },
   spacings: {
     small: '0.8rem',
