@@ -29,7 +29,6 @@ export default {
       regular: 400,
       bold: 700
     },
-    family:
-      'Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif'
+    family: 'Roboto, "Open Sans", sans-serif'
   }
 } as const

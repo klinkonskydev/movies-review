@@ -2,22 +2,6 @@ import { createGlobalStyle, css } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
   ${({ theme }) => css`
-    @font-face {
-      font-family: 'Roboto';
-      font-style: normal;
-      font-weight: 400;
-      font-display: swap;
-      src: local('Roboto'), url('/font/Roboto-Regular.ttf') format('ttf');
-    }
-
-    @font-face {
-      font-family: 'Roboto';
-      font-style: normal;
-      font-weight: 700;
-      font-display: swap;
-      src: local('Roboto'), url('/font/Roboto-Bold.ttf') format('ttf');
-    }
-
     html {
       font-size: 62.5%;
     }
@@ -31,6 +15,7 @@ export const GlobalStyle = createGlobalStyle`
 
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      font-size: ${theme.font.sizes.regular};
       font-family: ${theme.font.family};
       font-weight: ${theme.font.weight.bold};
 
