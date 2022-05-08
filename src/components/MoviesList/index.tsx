@@ -7,7 +7,6 @@ export type Movies = {
   title: string
   release_date: string
   poster_path: string | null
-  type?: 'author' | 'movie'
 }
 
 export type MoviesListProps = {
@@ -19,11 +18,12 @@ const MoviesList = ({ items }: MoviesListProps) => (
     {items?.length ? (
       items.map((item) => (
         <Card
-          {...item}
+          title={item.title}
           href={item.id}
           subtitle={item.release_date}
           key={`#${item.id} - ${item.title}`}
           poster_path={item.poster_path}
+          type="movie"
         />
       ))
     ) : (
