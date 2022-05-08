@@ -20,7 +20,7 @@ describe('<MoviesList />', () => {
 
     expect(screen.getAllByTestId(/mock Card/i)).toHaveLength(items.length)
     expect(
-      screen.getByRole('heading', { name: items[2].title })
+      screen.getByRole('heading', { name: items[2].name })
     ).toBeInTheDocument()
   })
 

@@ -1,7 +1,7 @@
 import Card from 'components/Card'
 import * as S from './styles'
 
-type ProductionCompanies = {
+export type ProductionCompanies = {
   id: number
   logo_path: null | string
   name: string
@@ -15,7 +15,7 @@ export type AuthorsListProps = {
 const AuthorsList = ({ items }: AuthorsListProps) => (
   <S.Wrapper>
     {items?.length ? (
-      items.map(companie => (
+      items.map((companie) => (
         <Card
           title={companie.name}
           subtitle={companie.origin_country}

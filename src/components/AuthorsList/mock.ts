@@ -1,53 +1,46 @@
-import { CardProps } from 'components/Card'
+import { ProductionCompanies } from '.'
 
 export default [
   {
     id: 1,
-    poster_path: '/74xTEgt7R36Fpooo50r9T25onhq.jpg',
-    title: '1-Deadpool',
-    subtitle: '09 FEV 2009',
-    type: 'author'
+    logo_path: '/74xTEgt7R36Fpooo50r9T25onhq.jpg',
+    name: '1-Deadpool',
+    origin_country: '09 FEV 2009'
   },
   {
     id: 2,
-    poster_path: '/74xTEgt7R36Fpooo50r9T25onhq.jpg',
-    title: '2-Deadpool',
-    subtitle: '09 FEV 2009',
-    type: 'author'
+    logo_path: '/74xTEgt7R36Fpooo50r9T25onhq.jpg',
+    name: '2-Deadpool',
+    origin_country: '09 FEV 2009'
   },
   {
     id: 3,
-    poster_path: '/74xTEgt7R36Fpooo50r9T25onhq.jpg',
-    title: '3-Deadpool',
-    subtitle: '09 FEV 2009',
-    type: 'author'
+    logo_path: '/74xTEgt7R36Fpooo50r9T25onhq.jpg',
+    name: '3-Deadpool',
+    origin_country: '09 FEV 2009'
   },
   {
     id: 4,
-    poster_path: '/74xTEgt7R36Fpooo50r9T25onhq.jpg',
-    title: '4-Deadpool',
-    subtitle: '09 FEV 2009',
-    type: 'author'
+    logo_path: '/74xTEgt7R36Fpooo50r9T25onhq.jpg',
+    name: '4-Deadpool',
+    origin_country: '09 FEV 2009'
   },
   {
     id: 5,
-    poster_path: '/74xTEgt7R36Fpooo50r9T25onhq.jpg',
-    title: '5-Deadpool',
-    subtitle: '09 FEV 2009',
-    type: 'author'
+    logo_path: '/74xTEgt7R36Fpooo50r9T25onhq.jpg',
+    name: '5-Deadpool',
+    origin_country: '09 FEV 2009'
   },
   {
     id: 6,
-    poster_path: '/74xTEgt7R36Fpooo50r9T25onhq.jpg',
-    title: '6-Deadpool',
-    subtitle: '09 FEV 2009',
-    type: 'author'
+    logo_path: '/74xTEgt7R36Fpooo50r9T25onhq.jpg',
+    name: '6-Deadpool',
+    origin_country: '09 FEV 2009'
   },
   {
     id: 7,
-    poster_path: '/74xTEgt7R36Fpooo50r9T25onhq.jpg',
-    title: '7-Deadpool',
-    subtitle: '09 FEV 2009',
-    type: 'author'
+    logo_path: '/74xTEgt7R36Fpooo50r9T25onhq.jpg',
+    name: '7-Deadpool',
+    origin_country: '09 FEV 2009'
   }
-] as CardProps[]
+] as ProductionCompanies[]
