@@ -5,6 +5,7 @@ export const Wrapper = styled.header`
   ${({ theme }) => css`
     position: fixed;
     inset: 0 0 auto 0;
+    z-index: 1;
 
     display: flex;
     justify-content: center;

@@ -1,10 +1,18 @@
+import AuthorsList from 'components/AuthorsList'
 import MediaMatch from 'components/MediaMatch'
 import PercentageCircle from 'components/PercentageCircle'
+
 import * as S from './styles'
 
 type Genres = {
   id: number
   name: string
+}
+type ProductionCompanies = {
+  id: number
+  logo_path: null | string
+  name: string
+  origin_country: string
 }
 
 export type MovieProps = {
@@ -18,6 +26,7 @@ export type MovieProps = {
   release_date: string
   runtime: number
   genres: Genres[]
+  production_companies?: ProductionCompanies[]
   //genre_ids: number[]
   //original_language: string
   //original_title: string
@@ -33,6 +42,7 @@ const Movie = ({
   vote_average,
   release_date,
   runtime,
+  production_companies,
   genres
 }: MovieProps) => (
   <S.Wrapper>
@@ -52,7 +62,7 @@ const Movie = ({
           <MediaMatch greaterThan="medium">
             <span>•</span>
           </MediaMatch>
-          <S.AboutMovie>{runtime}</S.AboutMovie>
+          <S.AboutMovie>{runtime}min</S.AboutMovie>
           <MediaMatch greaterThan="medium">
             <span>•</span>
           </MediaMatch>
@@ -74,6 +84,13 @@ const Movie = ({
         <S.Synopsis>{overview}</S.Synopsis>
       </S.DetailsWrapper>
     </S.Header>
+
+    {!!production_companies && (
+      <S.CompanieWrapper>
+        <S.Subtitle>Companies: </S.Subtitle>
+        <AuthorsList items={production_companies} />
+      </S.CompanieWrapper>
+    )}
   </S.Wrapper>
 )
 

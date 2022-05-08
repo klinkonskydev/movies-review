@@ -12,7 +12,7 @@
     "test:ci": "jest --runInBand",
     "typecheck": "tsc --project tsconfig.json --noEmit",
     "test:watch": "yarn jest --watchAll --maxWorkers=25%",
-    "storybook": "start-storybook -p 6006 -c .storybook watch-css -s ./src -s ./public",
+    "storybook": "start-storybook -p 6006 -s ./public",
     "build-storybook": "build-storybook -s public"
   },
   "dependencies": {

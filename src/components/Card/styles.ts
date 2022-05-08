@@ -35,6 +35,7 @@ const wrapperModifiers = {
     ${Image} {
       width: 17.5rem;
       height: 22.2rem;
+      object-fit: contain;
     }
 
     ${Heading} {
@@ -56,6 +57,7 @@ const wrapperModifiers = {
     ${Image} {
       width: 17.6rem;
       height: 26.4rem;
+      image-rendering: -webkit-optimize-contrast;
     }
 
     ${Heading} {

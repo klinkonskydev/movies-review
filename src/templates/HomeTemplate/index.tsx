@@ -13,12 +13,18 @@ import Header from 'components/Header'
 
 import * as S from './styles'
 
+type Genres = {
+  id: number
+  name: string
+}
+
 export type HomeTemplateProps = {
+  genres: Genres[]
   pages: number
   movies: Movies[]
 }
 
-const HomeTemplate = ({ movies, pages }: HomeTemplateProps) => {
+const HomeTemplate = ({ movies, pages, genres }: HomeTemplateProps) => {
   const [moviesList, setMoviesList] = useState<Movies[]>(movies)
   const { push } = useRouter()
 
@@ -51,11 +57,12 @@ const HomeTemplate = ({ movies, pages }: HomeTemplateProps) => {
 
           <S.Subtitle>Filtre por:</S.Subtitle>
           <S.ButtonsWrapper>
-            {buttonsMock.map((label, index) => (
-              <Button key={`#${index}-${label}`} type="button">
-                {label}
-              </Button>
-            ))}
+            {!!genres &&
+              genres.map(({ name, id }) => (
+                <Button key={id} type="button">
+                  {name}
+                </Button>
+              ))}
           </S.ButtonsWrapper>
         </Container>
       </S.HeaderWrapper>

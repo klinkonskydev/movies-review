@@ -3,22 +3,25 @@ import HomeTemplate, { HomeTemplateProps } from 'templates/HomeTemplate'
 
 import { api } from 'services/api'
 
-const Home = ({ movies, pages }: HomeTemplateProps) => {
-  return <HomeTemplate movies={movies} pages={pages} />
+const Home = ({ movies, pages, genres }: HomeTemplateProps) => {
+  return <HomeTemplate movies={movies} pages={pages} genres={genres} />
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const response = await api.get(`/movie/popular`, {
+  const genresresp = await api.get('/genre/movie/list')
+  const moviesrest = await api.get(`/movie/popular`, {
     params: { page: Number(query.page || 1) }
   })
 
-  const data = await response.data
-  const pages = data.total_pages
+  const movies = await moviesrest.data.results
+  const pages = await moviesrest.data.total_pages
+  const genres = await genresresp.data.genres
 
   return {
     props: {
       pages,
-      movies: data.results
+      movies,
+      genres
     }
   }
 }

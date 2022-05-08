@@ -94,6 +94,10 @@ export const MovieDescription = styled.p`
 
 export const Synopsis = styled.p`
   ${({ theme }) => css`
+    overflow: hidden;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
     font-weight: ${theme.font.weight.regular};
     line-height: ${theme.spacings.medium};
     color: ${theme.colors.xwhite};
@@ -133,5 +137,31 @@ export const NoteAverage = styled.div`
     border-radius: 6rem;
 
     background: ${rgba(theme.colors.white, 0.1)};
+  `}
+`
+
+export const Subtitle = styled.h3`
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.medium};
+    font-weight: ${theme.font.weight.regular};
+    margin-bottom: ${theme.spacings.medium};
+    color: ${theme.colors.black};
+
+    ${media.greaterThan('medium')`
+      font-size: ${theme.font.sizes.big};
+    `}
+  `}
+`
+
+export const CompanieWrapper = styled.div`
+  ${({ theme }) => css`
+    margin-top: ${theme.spacings.small};
+    padding-top: ${theme.spacings.medium};
+    padding-left: ${theme.spacings.xsmal};
+
+    ${media.greaterThan('medium')`
+      margin-top: calc(${theme.spacings.hue} + ${theme.spacings.medium});
+      padding-left: ${theme.spacings.hue};
+    `}
   `}
 `

@@ -33,5 +33,9 @@ export const GlobalStyle = createGlobalStyle`
       text-decoration: none;
       color: inherit;
     }
+
+    img {
+      filter: contrast(1.1) brightness(1.1) saturate(1.1);
+    }
   `}
 `

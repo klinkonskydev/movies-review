@@ -5,5 +5,9 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions'
   ],
-  framework: '@storybook/react'
+  framework: '@storybook/react',
+  webpackFinal: (config) => {
+    config.resolve.modules.push(`${process.cwd()/src}`)
+    return config
+  }
 }
